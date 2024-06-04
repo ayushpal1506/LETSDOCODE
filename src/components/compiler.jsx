@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Box, Button } from "@mui/material";
 import axios from "axios";
 import '/Users/ayushpal/letsdocode/letsocde/src/App.css';
-
+import { ColorRing } from "react-loader-spinner";
 function Compiler({ value, language }) {
 
     const [display,setdisplay] = useState("Press RUN button")
+    const [loading, setLoading] = useState(false);
 
     // const fetchLanguages = async () => {
     //   try {
@@ -25,7 +26,6 @@ function Compiler({ value, language }) {
         version: "15.0.2", 
         files: [
           {
-            name: 'main.java',
             content: code
           }
         ],
@@ -38,24 +38,28 @@ function Compiler({ value, language }) {
       });
       return res.data.run.output;
     } catch (error) {
+
       console.error("Error:", error);
       return null;
     }
   };
 
   const onclickhandle = async () => {
- 
+    setLoading(true)
     const data = await Runcode(language, value);
     setdisplay(data)
+    setLoading(false)
   };
 
   return (
     <div className="compilerContainer">
-      <Button color="secondary" onClick={onclickhandle} style={{ borderRadius: "5px", border: "1px solid green" }}>RUN</Button>
+      <Button color="secondary" onClick={onclickhandle} style={{ borderRadius: "5px", border: "1px solid green" }}>{loading?"Running...":"Run"}</Button>
       <Box className="compilerMainBox">
-
-            {display}
-
+      {loading ? (
+        "Loading ......"
+        ) : (
+            display
+        )}
       </Box>
     </div>
   );
