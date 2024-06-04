@@ -34,7 +34,7 @@ function Ide() {
           onChange={(newValue) => setValue(newValue)}
         />
        
-        <Compiler/>
+        <Compiler value = {value} language = {language}/>
       </Box>
     </>
   );
