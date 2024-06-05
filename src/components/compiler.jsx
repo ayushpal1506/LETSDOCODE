@@ -2,28 +2,30 @@ import React, { useState } from "react";
 import { Box, Button } from "@mui/material";
 import axios from "axios";
 import '/Users/ayushpal/letsdocode/letsocde/src/App.css';
-import { ColorRing } from "react-loader-spinner";
+import { Lang_ver } from "./Languages";
+
 function Compiler({ value, language }) {
 
-    const [display,setdisplay] = useState("Press RUN button")
-    const [loading, setLoading] = useState(false);
+  const [display, setdisplay] = useState("Press RUN button")
+  const [loading, setLoading] = useState(false);
+  let LANGUAGE_VERSIONS = "";
 
-    // const fetchLanguages = async () => {
-    //   try {
-    //     const res = await axios.get("https://emkc.org/api/v2/piston/runtimes");
-    //     console.log(res.data);
-    //   } catch (error) {
-    //     console.error("Error fetching languages:", error);
-    //   }
-    // };
-    
-    // fetchLanguages();
-    
+  const fatchVersions = () => {
+    Lang_ver().then(data => {
+      LANGUAGE_VERSIONS = data;
+      // console.log(" ================= language string " ,LANGUAGE_VERSIONS)
+    });
+  }
+  fatchVersions()
+  console.log(" ============== fatch version ", LANGUAGE_VERSIONS)
+
+
   const Runcode = async (language, code) => {
+
     try {
       const res = await axios.post("https://emkc.org/api/v2/piston/execute", {
         language: language,
-        version: "15.0.2", 
+        version: LANGUAGE_VERSIONS.language,
         files: [
           {
             content: code
@@ -53,12 +55,12 @@ function Compiler({ value, language }) {
 
   return (
     <div className="compilerContainer">
-      <Button color="secondary" onClick={onclickhandle} style={{ borderRadius: "5px", border: "1px solid green" }}>{loading?"Running...":"Run"}</Button>
+      <Button color="secondary" onClick={onclickhandle} style={{ borderRadius: "5px", border: "1px solid green" }}>{loading ? "Running..." : "Run"}</Button>
       <Box className="compilerMainBox">
-      {loading ? (
-        "Loading ......"
+        {loading ? (
+          "Loading ......"
         ) : (
-            display
+          display
         )}
       </Box>
     </div>
