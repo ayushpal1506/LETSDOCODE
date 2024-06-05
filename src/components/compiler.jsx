@@ -4,28 +4,23 @@ import axios from "axios";
 import '/Users/ayushpal/letsdocode/letsocde/src/App.css';
 import { Lang_ver } from "./Languages";
 
+
 function Compiler({ value, language }) {
+
 
   const [display, setdisplay] = useState("Press RUN button")
   const [loading, setLoading] = useState(false);
-  let LANGUAGE_VERSIONS = "";
 
-  const fatchVersions = () => {
-    Lang_ver().then(data => {
-      LANGUAGE_VERSIONS = data;
-      // console.log(" ================= language string " ,LANGUAGE_VERSIONS)
-    });
-  }
-  fatchVersions()
-  console.log(" ============== fatch version ", LANGUAGE_VERSIONS)
-
+  console.log(language)
 
   const Runcode = async (language, code) => {
 
     try {
+      const languagVersion = await Lang_ver();
+
       const res = await axios.post("https://emkc.org/api/v2/piston/execute", {
         language: language,
-        version: LANGUAGE_VERSIONS.language,
+        version:languagVersion[language] ,
         files: [
           {
             content: code
@@ -52,6 +47,7 @@ function Compiler({ value, language }) {
     setdisplay(data)
     setLoading(false)
   };
+
 
   return (
     <div className="compilerContainer">
