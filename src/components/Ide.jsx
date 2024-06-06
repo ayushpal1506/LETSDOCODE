@@ -26,7 +26,7 @@ function Ide() {
         <Editor className="editor" 
           float="left"
           height="100vh"
-          width="55%"
+          width="50%"
           options={{ fontSize: 16 }}
           theme="vs-dark"
           language={language}

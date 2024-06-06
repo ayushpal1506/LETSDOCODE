@@ -17,14 +17,14 @@ langChange(value)
   return (
     <Box sx={{ minWidth: 120 }}>
     <FormControl fullWidth>
-      <InputLabel >Language</InputLabel>
+
       <Select
       style={{width:"10%",marginBottom:"10px",backgroundColor:"grey"}}
         value={language}
         label="Language"
         onChange={handleChange}
       >
-        
+
         <MenuItem value={"java"}>java</MenuItem>
         <MenuItem value={"cpp"}>C++</MenuItem>
         <MenuItem value={"python"}>python</MenuItem>

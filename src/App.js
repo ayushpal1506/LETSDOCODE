@@ -2,7 +2,7 @@
 import './App.css';
 import React from 'react';
 import Ide from './components/Ide';
-
+import NavigationBar from './components/NavigationBar';
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
     <div className="App"> 
       <header className="App-header">
         
+        <NavigationBar/>
     <Ide/>
    
       </header>
