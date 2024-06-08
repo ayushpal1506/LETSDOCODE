@@ -2,7 +2,9 @@
 import './App.css';
 import React from 'react';
 import Ide from './components/Ide';
-import NavigationBar from './components/NavigationBar';
+import { Button } from '@mui/material';
+import Home from './components/Home';
+
 
 
 function App() {
@@ -10,8 +12,10 @@ function App() {
   return (
     <div className="App"> 
       <header className="App-header">
-        
-        <NavigationBar/>
+
+        <Button> HOME</Button>
+        <Home></Home>
+
     <Ide/>
    
       </header>

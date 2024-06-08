@@ -3,21 +3,14 @@ import { Box, Button } from "@mui/material";
 import axios from "axios";
 import '/Users/ayushpal/letsdocode/letsocde/src/App.css';
 import { Lang_ver } from "./Languages";
-
-
 function Compiler({ value, language }) {
-
-
   const [display, setdisplay] = useState("Press RUN button")
   const [loading, setLoading] = useState(false);
 
-  console.log(language)
-
   const Runcode = async (language, code) => {
-
     try {
+      
       const languagVersion = await Lang_ver();
-
       const res = await axios.post("https://emkc.org/api/v2/piston/execute", {
         language: language,
         version:languagVersion[language] ,
@@ -47,7 +40,6 @@ function Compiler({ value, language }) {
     setdisplay(data)
     setLoading(false)
   };
-
 
   return (
     <div className="compilerContainer">
