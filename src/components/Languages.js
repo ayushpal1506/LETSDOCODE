@@ -6,10 +6,10 @@ export const LANGUAGE_SNIPPETS = {
   python: `print("Hellooooo, lets code ")`,
 };
 export const Lang_ver = async () => {
+  
   try {
     const res = await axios.get("https://emkc.org/api/v2/piston/runtimes");
     const versions = res.data;
-
     const LANGUAGE_VERSIONS = {
       java: versions[42].version,
       cpp: versions[32].version,

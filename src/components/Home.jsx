@@ -6,8 +6,8 @@ import ListItemText from '@mui/material/ListItemText';
 
 function Home() {
   return (
-    <List sx={{ width: '100vw', maxWidth: 360, bgcolor: 'black' }}>
-      {[1, 2, 3,4,4,5,6].map((value) => (
+    <List sx={{ width: '100vw', maxWidth: 360, bgcolor: 'black', color:"white"}}>
+      {[1, 2, 3,4,5,6].map((value) => (
         <ListItem
           key={value}
 
