@@ -9,7 +9,6 @@ function Compiler({ value, language }) {
 
   const Runcode = async (language, code) => {
     try {
-      
       const languagVersion = await Lang_ver();
       const res = await axios.post("https://emkc.org/api/v2/piston/execute", {
         language: language,

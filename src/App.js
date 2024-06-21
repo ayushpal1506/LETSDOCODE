@@ -4,6 +4,7 @@ import Ide from "./components/Ide";
 import Home from "./components/Home";
 import { Button } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import ProblemIDE from "./components/ProblemIDE";
 
 function App() {
   return (<>
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ide" element={<Ide />} />
+          <Route path="/ProblemIde/:problemid" element={<ProblemIDE />} />
         </Routes>
         </header>
       </div>
